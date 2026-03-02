@@ -5,9 +5,10 @@
 sap.ui.define([
         "sap/ui/core/UIComponent",
         "sap/ui/Device",
-        "student/com/sap/training/advancedsapui5/fullscreen/model/models"
+        "student/com/sap/training/advancedsapui5/fullscreen/model/models",
+        "student/com/sap/training/advancedsapui5/fullscreen/controller/ListSelector"
     ],
-    function (UIComponent, Device, models) {
+    function (UIComponent, Device, models, ListSelector) {
         "use strict";
 
         return UIComponent.extend("student.com.sap.training.advancedsapui5.fullscreen.Component", {
@@ -29,6 +30,9 @@ sap.ui.define([
 
                 // set the device model
                 this.setModel(models.createDeviceModel(), "device");
+
+                // Instanciação do listSelector
+                this.oListSelector = new ListSelector();
             }
         });
     }

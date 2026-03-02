@@ -84,12 +84,12 @@
         "viewType": "XML",
         "async": true,
         "viewPath": "student.com.sap.training.advancedsapui5.fullscreen.view",
-        "controlAggregation": "pages",
-        "controlId": "app",
-        "clearControlAggregation": false,
+        "controlAggregation": "beginColumnPages",
+        "controlId": "idFlexLayout",
+        "clearControlAggregation": true,
         "transition": "slide",
         "bypassed": {
-          "target": ["notFound"]
+          "target": ["overview","notFound"]
         }
       },
       "routes": [
@@ -114,19 +114,23 @@
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "Carrier",
-          "viewName": "Carrier"
+          "viewName": "Carrier",
+          "viewLevel": 1,
+          "controlAggregation": "beginColumnPages"
         },
         "flights": {
           "viewType": "XML",
           "transition": "slide",
           "viewId": "Flights",
           "viewName": "Flights",
-          "viewLevel": 2
+          "viewLevel": 2,
+          "controlAggregation": "midColumnPages"
         },
         "notFound": {
           "viewId": "NotFound",
           "viewName": "NotFound",
-          "transition": "show"
+          "transition": "show",
+          "controlAggregation": "midColumnPages"
         }
       }
     },

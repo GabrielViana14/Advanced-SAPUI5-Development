@@ -1,12 +1,28 @@
 sap.ui.define(
     [
-        "sap/ui/core/mvc/Controller"
+        "sap/ui/core/mvc/Controller",
+        "sap/ui/model/json/JSONModel"
     ],
-    function(BaseController) {
+    /**
+     * @param {typeof sap.ui.core.mvc.Controller} Controller  
+     */
+    function(Controller, JSONModel) {
       "use strict";
   
-      return BaseController.extend("student.com.sap.training.advancedsapui5.fullscreen.controller.App", {
+      return Controller.extend("student.com.sap.training.advancedsapui5.fullscreen.controller.App", {
         onInit: function() {
+          var oViewModel = new JSONModel({
+            busy: true,
+            delay: 0,
+            layout: "OneColumn",
+            previousLayout: "",
+            actionButtonsInfo: {
+              midColumn: {
+                fullScreen: false
+              }
+            }
+          });
+          this.getOwnerComponent().setModel(oViewModel, "appView");
         }
       });
     }

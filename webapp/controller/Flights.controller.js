@@ -1,7 +1,8 @@
 sap.ui.define([
-    "student/com/sap/training/advancedsapui5/fullscreen/controller/BaseController"
+    "student/com/sap/training/advancedsapui5/fullscreen/controller/BaseController",
+    "sap/m/MessageToast"
 ],
-function (Controller) {
+function (Controller, MessageToast) {
     "use strict";
 
     return Controller.extend("student.com.sap.training.advancedsapui5.fullscreen.controller.Flights", {
@@ -76,6 +77,11 @@ function (Controller) {
             var oView = this.getView();
             oView.getModel("appView").setProperty("/layout", "OneColumn");
             this.getRouter().navTo("Overview", {}, true);
+        },
+
+        onHover: function(evt){
+            var sText = this.getOwnerComponent().getModel("i18n").getProperty("msgSeatsAv");
+            MessageToast.show(evt.getSource().getHoverText()+ " " + sText, {duration: 1000});
         }
     });
 });

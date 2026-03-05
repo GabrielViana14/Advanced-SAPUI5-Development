@@ -1,7 +1,9 @@
 <mvc:View controllerName="student.com.sap.training.advancedsapui5.fullscreen.controller.Flights"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m" xmlns:l="sap.ui.layout"
-    xmlns:ux="sap.uxap">
+    xmlns="sap.m" 
+    xmlns:l="sap.ui.layout"
+    xmlns:ux="sap.uxap"
+    xmlns:cust="student.com.sap.training.advancedsapui5.fullscreen.control">
     <ux:ObjectPageLayout id="objectPageLayout">
         <ux:headerTitle>
             <ux:ObjectPageDynamicHeaderTitle id="objectPageDynamicHeader">
@@ -17,7 +19,7 @@
                         icon="sap-icon://decline"
                         press="handleClose"
                         tooltip="Close Middle Column"
-                        visible="{=${device>/system/phone}}"/>
+                        visible="true"/>
                 </ux:navigationActions>
             </ux:ObjectPageDynamicHeaderTitle>
         </ux:headerTitle>
@@ -67,6 +69,20 @@
                         <Column id="flseatocccolumn" hAlign="Right">
                             <Text id="seatoccheader" text="{i18n>seatocc}" />
                         </Column>
+                        <Column
+                            id="flplaneinfo"
+                            minScreenWidth="Tablet"
+                            demandPopin="true"
+                            hAlign="Center">
+                            <Text id="flplaneinfotext" text="{i18n>planeInfo}"/>
+                        </Column>
+                        <Column 
+                            id="flbooking"
+                            minScreenWidth="Tablet"
+                            demandPopin="true"
+                            hAlign="Center">
+                            <Text id="flbookingtext" text="{i18n>bookaction}"/>
+                        </Column>
                     </columns>
                     
                     <items>
@@ -76,6 +92,16 @@
                                 <Text id="fldatetext" text="{path: 'Fldate', type: 'sap.ui.model.type.Date'}" />
                                 <Text id="flseatsmaxtext" text="{Seatsmax}" />
                                 <Text id="flseatsocctext" text="{Seatsocc}" />
+                                <cust:PlaneInfo 
+                                    id="planeInfo1"
+                                    seatsMax="{Seatsmax}"
+                                    seatsOcc="{Seatsocc}"/>
+                                <cust:HoverButton
+                                    id="hoverButton1"
+                                    text="{i18n>bookaction}"
+                                    allowHover="true"
+                                    hoverText="{=${Seatsmax} - ${Seatsocc}}"
+                                    hover="onHover"/>
                             </cells>
                         </ColumnListItem>
                     </items>
